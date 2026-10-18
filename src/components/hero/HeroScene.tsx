@@ -10,7 +10,8 @@ const TIP_COLOR = LOGO_LIME; // lime accent on the small tip of the X
 const BOX = { x: 1215, y: 98, w: 610, h: 555 };
 const CENTER = { x: 1520, y: 372 };
 const UNIT = 0.0099; // logo units -> world units
-const UNIT_MOBILE = 0.0078;
+// Portrait phones: the canvas is a box shaped like the X, so the X is sized to fill it (about 20px margin).
+const UNIT_MOBILE = 0.0125;
 
 const hash = (n: number) => {
   const s = Math.sin(n * 127.1 + 311.7) * 43758.5453;
@@ -84,7 +85,7 @@ function MarkParticles({ mobile, active }: { mobile: boolean; active: boolean })
   const pointer = useRef({ x: 0, y: 0, seen: false });
 
   const geo = useMemo(() => {
-    const total = mobile ? 4200 : 9500;
+    const total = mobile ? 6500 : 9500;
     const main = sampleFill(X_MAIN, 2);
     const tipPts = sampleFill(X_TIP, 2);
     const nTip = Math.round((total * tipPts.length) / (main.length + tipPts.length));
@@ -122,7 +123,7 @@ function MarkParticles({ mobile, active }: { mobile: boolean; active: boolean })
       uAspect: { value: 1 },
       uMouse: { value: new THREE.Vector2(0, 0) },
       uMouseOn: { value: 0 },
-      uOffset: { value: new THREE.Vector2(mobile ? 0 : 1.1, mobile ? 0 : 0.7) },
+      uOffset: { value: new THREE.Vector2(mobile ? 0.35 : 1.1, mobile ? 0 : 0.7) },
       uMain: { value: new THREE.Color(LOGO_PURPLE) },
       uTip: { value: new THREE.Color(TIP_COLOR) },
     }),

@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant short (@media (orientation: landscape) and (max-height: 560px));
+
 @theme {
   --color-void: #ffffff;
   --color-surface-1: #f6f7fa;

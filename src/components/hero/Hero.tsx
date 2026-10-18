@@ -1,6 +1,7 @@
 "use client";
 import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
+import { ArrowDown, ArrowRight } from "lucide-react";
 import { hero } from "@/content/site";
 import { LOGO_LIME, LOGO_PURPLE, X_MAIN, X_TIP, X_VIEWBOX } from "@/lib/logoPaths";
 import { Button } from "@/components/ui/Button";
@@ -37,7 +38,8 @@ function StaticMark() {
 export function Hero() {
   const { reduced } = useMotionPref();
   const root = useRef<HTMLElement>(null);
-  const [gl, setGl] = useState(false);
+  // null = still deciding: render nothing, so the still fallback never flashes before the 3D scene.
+  const [gl, setGl] = useState<boolean | null>(null);
   const [near, setNear] = useState(false);
   const [mobile, setMobile] = useState(false);
 
@@ -62,15 +64,18 @@ export function Hero() {
       ref={root}
       id="top"
       aria-label="Introduction"
-      className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden pt-[50svh] lg:pt-32"
+      className="short:pt-24 relative flex min-h-[100svh] flex-col justify-end overflow-hidden pt-[calc(5rem+(100vw-2.5rem)*0.9)] lg:pt-32"
     >
       <div aria-hidden className="grid-overlay absolute inset-0" />
-      <div className="absolute inset-x-0 top-14 h-[40%] lg:inset-y-0 lg:top-0 lg:left-auto lg:h-auto lg:w-[62%]">
-        {gl ? <Scene active={near} mobile={mobile} /> : <StaticMark />}
+      <div className="short:top-16 short:right-4 short:bottom-auto short:left-auto short:aspect-auto short:h-[calc(100svh-5rem)] short:w-[52%] absolute top-20 right-5 left-5 aspect-[589/530] lg:top-0 lg:right-0 lg:bottom-0 lg:left-auto lg:aspect-auto lg:w-[62%]">
+        {gl === null ? null : gl ? <Scene active={near} mobile={mobile} /> : <StaticMark />}
       </div>
 
       <div className="wrap relative w-full pb-12">
-        <h1 className="display hero-in mt-6 max-w-3xl" style={{ animationDelay: "0.15s" }}>
+        <h1
+          className="display hero-in short:max-w-[52%] mt-6 max-w-3xl"
+          style={{ animationDelay: "0.15s" }}
+        >
           <span className="label border-line bg-surface-1/70 !text-text mb-6 flex w-fit max-w-full items-center gap-2.5 rounded-full border px-4 py-2 !text-[11px] !leading-snug shadow-[0_8px_24px_-16px_rgba(94,23,235,0.5)] backdrop-blur max-sm:rounded-2xl sm:!text-[12px]">
             <span aria-hidden className="relative flex size-2 shrink-0">
               <span className="bg-accent absolute inline-flex size-full rounded-full opacity-60 motion-safe:animate-ping" />
@@ -85,15 +90,17 @@ export function Hero() {
           ))}
         </h1>
         <p
-          className="hero-in text-muted mt-8 max-w-[52ch] text-lg"
+          className="hero-in text-muted short:max-w-[48%] mt-8 max-w-[52ch] text-lg"
           style={{ animationDelay: "0.4s" }}
         >
           {hero.sub}
         </p>
         <div className="hero-in mt-10 flex flex-wrap gap-4" style={{ animationDelay: "0.55s" }}>
-          <Button href={hero.primary.href}>{hero.primary.label}</Button>
+          <Button href={hero.primary.href}>
+            {hero.primary.label} <ArrowRight size={18} aria-hidden />
+          </Button>
           <Button href={hero.secondary.href} variant="secondary">
-            {hero.secondary.label}
+            {hero.secondary.label} <ArrowDown size={18} aria-hidden />
           </Button>
         </div>
         <StatStrip stats={hero.signals} />

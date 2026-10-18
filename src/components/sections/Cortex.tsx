@@ -99,7 +99,7 @@ export function Cortex() {
   const { reduced } = useMotionPref();
   const stage = useRef<HTMLDivElement>(null);
   const labels = useRef<(HTMLElement | null)[]>([]);
-  const [gl, setGl] = useState(false);
+  const [gl, setGl] = useState<boolean | null>(null);
   const [near, setNear] = useState(false);
   const [mobile, setMobile] = useState(false);
 
@@ -173,7 +173,7 @@ export function Cortex() {
         </div>
 
         <div ref={stage} className="relative mx-auto aspect-square w-full max-w-[540px]">
-          {gl ? (
+          {gl === null ? null : gl ? (
             <>
               <CortexScene active={near} mobile={mobile} labels={labels} />
               {cortex.nodes.map((n, k) => (

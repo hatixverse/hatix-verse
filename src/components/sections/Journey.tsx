@@ -4,6 +4,7 @@ import {
   ArrowRight,
   ArrowUpRight,
   Check,
+  Clock,
   FlaskConical,
   Hammer,
   Rocket,
@@ -118,7 +119,9 @@ export function Journey() {
                         0{i + 1} · {s.verb}
                       </span>
                     </p>
-                    <p className="label !text-[10px]">{s.typical}</p>
+                    <p className="label inline-flex items-center gap-1.5 !text-[10px]">
+                      <Clock size={12} aria-hidden /> {s.typical}
+                    </p>
                   </div>
                   <h3 className="mt-6 text-3xl font-semibold tracking-tight">
                     <span className="text-faint">HATIX </span>

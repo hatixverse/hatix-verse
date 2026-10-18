@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import { Check, Clock, Mail, Send } from "lucide-react";
 import { contact, site } from "@/content/site";
 import { contactSchema } from "@/lib/validations";
 import { Section } from "@/components/layout/Section";
@@ -73,8 +74,12 @@ export function Contact() {
           </p>
           <h2 className="h2 mt-4">{contact.heading}</h2>
           <div className="text-muted mt-8 space-y-3">
-            <p>{contact.replyNote}</p>
-            <p>
+            <p className="flex items-start gap-2.5">
+              <Clock size={18} aria-hidden className="text-accent mt-1 shrink-0" />
+              {contact.replyNote}
+            </p>
+            <p className="flex items-center gap-2.5">
+              <Mail size={18} aria-hidden className="text-accent shrink-0" />
               <a
                 href={`mailto:${site.email}`}
                 className="text-text decoration-line hover:decoration-accent underline underline-offset-4"
@@ -87,6 +92,9 @@ export function Contact() {
         <div aria-live="polite">
           {state === "done" ? (
             <div className="border-line bg-void rounded-2xl border p-8">
+              <span className="bg-lime mb-4 grid size-10 place-items-center rounded-full text-[#111823]">
+                <Check size={20} strokeWidth={2.5} aria-hidden />
+              </span>
               <p className="text-2xl font-semibold">Message received.</p>
               <p className="text-muted mt-2">Thank you. We will reply to the email you provided.</p>
             </div>
@@ -147,7 +155,13 @@ export function Contact() {
                 </p>
               )}
               <Button type="submit" disabled={state === "sending"}>
-                {state === "sending" ? "Sending…" : "Send message"}
+                {state === "sending" ? (
+                  "Sending…"
+                ) : (
+                  <>
+                    Send message <Send size={16} aria-hidden />
+                  </>
+                )}
               </Button>
             </form>
           )}

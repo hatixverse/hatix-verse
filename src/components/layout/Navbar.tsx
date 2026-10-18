@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { Menu, MessageCircle, X } from "lucide-react";
 import { nav } from "@/content/site";
 import { Button } from "@/components/ui/Button";
 import { Logo } from "@/components/ui/Logo";
@@ -62,6 +62,7 @@ export function Navbar() {
         </nav>
         <div className="flex items-center gap-2">
           <Button href="/#contact" className="!px-4 !py-2 !text-sm whitespace-nowrap">
+            <MessageCircle size={16} aria-hidden />
             <span className="sm:hidden">Let&rsquo;s talk</span>
             <span className="hidden sm:inline">Start a conversation</span>
           </Button>

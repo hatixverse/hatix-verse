@@ -13,7 +13,7 @@ export function Footer() {
   return (
     <footer style={darkTokens} className="bg-void text-text">
       <div className="wrap">
-        <div className="border-line flex flex-col gap-8 border-b py-16 md:flex-row md:items-end md:justify-between md:py-24">
+        <div className="border-line flex flex-col gap-8 border-b py-12 md:flex-row md:items-end md:justify-between md:py-24">
           <div>
             <p className="label flex items-center gap-2">
               <span aria-hidden className="bg-spark size-1.5 rounded-full" />
@@ -29,8 +29,8 @@ export function Footer() {
           </Link>
         </div>
 
-        <div className="grid gap-12 py-16 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr_1fr_1fr]">
-          <div className="sm:col-span-2 lg:col-span-1">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-10 py-12 sm:grid-cols-3 sm:gap-12 sm:py-16 lg:grid-cols-[1.5fr_1fr_1fr_1fr_1fr_1fr]">
+          <div className="col-span-2 sm:col-span-3 lg:col-span-1">
             <Logo className="text-text h-12 w-auto" />
             <p className="text-muted mt-4 max-w-xs text-sm">{footer.descriptor}</p>
             <a
@@ -96,7 +96,7 @@ export function Footer() {
             </ul>
           </div>
 
-          <div>
+          <div className="col-span-2 sm:col-span-1">
             <h2 className={colTitle}>Connect</h2>
             <ul className="flex gap-3">
               {site.socials.map((s) => (
