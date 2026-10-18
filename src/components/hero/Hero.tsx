@@ -1,7 +1,7 @@
 "use client";
 import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
-import { ArrowDown, ArrowRight } from "lucide-react";
+import { Compass, Rocket } from "lucide-react";
 import { hero } from "@/content/site";
 import { LOGO_LIME, LOGO_PURPLE, X_MAIN, X_TIP, X_VIEWBOX } from "@/lib/logoPaths";
 import { Button } from "@/components/ui/Button";
@@ -97,10 +97,10 @@ export function Hero() {
         </p>
         <div className="hero-in mt-10 flex flex-wrap gap-4" style={{ animationDelay: "0.55s" }}>
           <Button href={hero.primary.href}>
-            {hero.primary.label} <ArrowRight size={18} aria-hidden />
+            {hero.primary.label} <Rocket size={18} aria-hidden />
           </Button>
           <Button href={hero.secondary.href} variant="secondary">
-            {hero.secondary.label} <ArrowDown size={18} aria-hidden />
+            {hero.secondary.label} <Compass size={18} aria-hidden />
           </Button>
         </div>
         <StatStrip stats={hero.signals} />
