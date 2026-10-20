@@ -84,7 +84,7 @@ function PhoneScene({ run, still }: { run: boolean; still: boolean }) {
   return (
     <div className="relative h-[540px] w-[290px]" style={{ transformStyle: "preserve-3d" }}>
       <div
-        className="absolute inset-0 rounded-[42px] border border-white/20 bg-[#0a0c12] p-2 shadow-[0_60px_100px_-30px_rgba(94,23,235,0.65)]"
+        className="absolute inset-0 rounded-[42px] border border-white/20 bg-[#0a0c12] p-2 shadow-[0_60px_100px_-30px_rgb(var(--accent-rgb)/0.65)]"
         style={{ transform: "rotateY(-9deg)" }}
       >
         <div className="relative flex h-full flex-col overflow-hidden rounded-[34px] bg-gradient-to-b from-[#12151f] to-[#0a0c12]">
@@ -164,7 +164,7 @@ function SiteScene({ run, still }: { run: boolean; still: boolean }) {
   return (
     <div className="relative h-[420px] w-[480px]" style={{ transformStyle: "preserve-3d" }}>
       <div
-        className="absolute inset-0 overflow-hidden rounded-2xl border border-white/20 bg-[#0a0c12] shadow-[0_60px_100px_-30px_rgba(94,23,235,0.65)]"
+        className="absolute inset-0 overflow-hidden rounded-2xl border border-white/20 bg-[#0a0c12] shadow-[0_60px_100px_-30px_rgb(var(--accent-rgb)/0.65)]"
         style={{ transform: "rotateY(-8deg)" }}
       >
         <div
@@ -422,7 +422,7 @@ export function Ecosystem() {
             className="pointer-events-none absolute inset-0 z-0 opacity-0 transition-opacity duration-500 lg:opacity-100"
             style={{
               background:
-                "radial-gradient(520px circle at var(--mx, 70%) var(--my, 40%), rgba(94,23,235,0.22), transparent 65%)",
+                "radial-gradient(520px circle at var(--mx, 70%) var(--my, 40%), rgb(var(--accent-rgb)/0.22), transparent 65%)",
             }}
           />
           {/* oversized product name, deep in the scene */}

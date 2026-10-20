@@ -9,7 +9,17 @@ import {
 } from "@/lib/logoPaths";
 
 // HATIX wordmark. Letters follow the text colour (currentColor); the X is always brand colours.
-export function Logo({ className, title = "HATIX" }: { className?: string; title?: string }) {
+export function Logo({
+  className,
+  title = "HATIX",
+  xColor = LOGO_PURPLE,
+  tipColor = LOGO_LIME,
+}: {
+  className?: string;
+  title?: string;
+  xColor?: string;
+  tipColor?: string;
+}) {
   return (
     <svg viewBox={LOGO_VIEWBOX} role="img" aria-label={title} className={className}>
       <g fill="currentColor" transform={LETTERS_TRANSFORM}>
@@ -18,8 +28,8 @@ export function Logo({ className, title = "HATIX" }: { className?: string; title
         ))}
       </g>
       <g strokeLinejoin="round" strokeWidth="6">
-        <path d={X_MAIN} fill={LOGO_PURPLE} stroke={LOGO_PURPLE} />
-        <path d={X_TIP} fill={LOGO_LIME} stroke={LOGO_LIME} />
+        <path d={X_MAIN} fill={xColor} stroke={xColor} />
+        <path d={X_TIP} fill={tipColor} stroke={tipColor} />
       </g>
     </svg>
   );

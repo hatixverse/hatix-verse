@@ -23,7 +23,7 @@ export default function Page() {
           <p className="text-muted mt-4 max-w-[62ch]">
             To ask us to access or delete your message,{" "}
             <a className="text-accent-hi underline" href={`mailto:${site.email}`}>
-              email us
+              {site.email}
             </a>
             .
           </p>

@@ -37,7 +37,7 @@ export function Footer() {
               href={`mailto:${site.email}`}
               className="hover:text-lime mt-6 inline-flex items-center gap-2 text-sm"
             >
-              <Mail size={16} aria-hidden /> Email us
+              <Mail size={16} aria-hidden /> {site.email}
             </a>
           </div>
 

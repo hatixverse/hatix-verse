@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Menu, MessageCircle, X } from "lucide-react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 import { nav } from "@/content/site";
 import { Button } from "@/components/ui/Button";
 import { Logo } from "@/components/ui/Logo";
@@ -40,7 +40,7 @@ export function Navbar() {
       )}
     >
       <div className="wrap flex h-16 items-center justify-between">
-        <Link href="/" aria-label="HATIX home" className="text-[#111823]">
+        <Link href="/" aria-label="HATIX home" className="text-[#1f1619]">
           <Logo className="h-8 w-auto sm:h-9" />
         </Link>
         <nav aria-label="Primary" className="hidden items-center gap-8 md:flex">
@@ -62,9 +62,9 @@ export function Navbar() {
         </nav>
         <div className="flex items-center gap-2">
           <Button href="/#contact" className="!px-4 !py-2 !text-sm whitespace-nowrap">
-            <MessageCircle size={16} aria-hidden />
             <span className="sm:hidden">Let&rsquo;s talk</span>
             <span className="hidden sm:inline">Start a conversation</span>
+            <ArrowUpRight size={16} aria-hidden />
           </Button>
           <button
             type="button"

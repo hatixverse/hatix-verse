@@ -76,7 +76,7 @@ export function StatStrip({ stats }: { stats: Stat[] }) {
       </div>
       <dl
         ref={ref}
-        className="relative grid grid-cols-3 overflow-hidden rounded-2xl border border-white/70 bg-white/40 shadow-[0_24px_60px_-24px_rgba(94,23,235,0.45),inset_0_1px_0_rgba(255,255,255,0.9)] backdrop-blur-xl backdrop-saturate-150"
+        className="relative grid grid-cols-3 overflow-hidden rounded-2xl border border-white/70 bg-white/40 shadow-[0_24px_60px_-24px_rgb(var(--accent-rgb)/0.45),inset_0_1px_0_rgba(255,255,255,0.9)] backdrop-blur-xl backdrop-saturate-150"
       >
         <span
           aria-hidden

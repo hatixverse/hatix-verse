@@ -23,14 +23,16 @@ export const site = {
     "HATIX",
   ],
   legalEntity: "HATIX VERSE LLP",
-  email: "hatixverse@gmail.com",
+  email: "contact@hatixverse.com",
   // [TO CONFIRM] Replace each "#" with the real profile URL. Entries with "#" render as inactive.
   socials: [
-    { id: "linkedin", label: "LinkedIn", href: "#" },
-    { id: "x", label: "X", href: "#" },
-    { id: "github", label: "GitHub", href: "#" },
-    { id: "instagram", label: "Instagram", href: "#" },
-  ] as { id: "linkedin" | "x" | "github" | "instagram"; label: string; href: string }[],
+    { id: "linkedin", label: "LinkedIn", href: "https://www.linkedin.com/company/hatixverse" },
+    { id: "facebook", label: "Facebook", href: "https://www.facebook.com/hatixverse/" },
+  ] as {
+    id: "linkedin" | "facebook" | "x" | "instagram";
+    label: string;
+    href: string;
+  }[],
 };
 
 export const nav = [
@@ -366,7 +368,7 @@ export const about = {
 };
 
 export const contact = {
-  replyNote: "We read every message and reply within two business days.", // MOCK
+  replyNote: "We read every message and reply within one working day.", // MOCK
   heading: "Start a conversation.",
 };
 

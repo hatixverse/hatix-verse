@@ -2,8 +2,8 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { contactSchema } from "@/lib/validations";
 import { rateLimit } from "@/lib/rateLimit";
-
-const esc = (s: string) => s.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
+import { LOGO_PNG_BASE64 } from "@/lib/email/logoData";
+import { LOGO_CID, acknowledgementEmail, notificationEmail } from "@/lib/email/templates";
 
 export async function POST(req: Request) {
   const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
@@ -35,13 +35,38 @@ export async function POST(req: Request) {
     console.warn("[contact] RESEND_API_KEY / CONTACT_TO_EMAIL not set; message not sent.");
     return NextResponse.json({ error: "Contact form is not configured yet." }, { status: 503 });
   }
-  const { error } = await new Resend(key).emails.send({
-    from: process.env.CONTACT_FROM_EMAIL ?? "HATIX Verse <onboarding@resend.dev>",
+  const resend = new Resend(key);
+  const from = process.env.CONTACT_FROM_EMAIL ?? "HATIX <onboarding@resend.dev>";
+  const logo = [{ filename: "hatix.png", content: LOGO_PNG_BASE64, contentId: LOGO_CID }];
+
+  // 1. Notify the team. This is the one that must succeed.
+  const note = notificationEmail(d);
+  const { error } = await resend.emails.send({
+    from,
     to,
     replyTo: d.email,
-    subject: `[HATIX Verse] Message from ${d.name}`,
-    html: `<p><b>${esc(d.name)}</b> (${esc(d.email)})</p><p style="white-space:pre-wrap">${esc(d.message)}</p>`,
+    subject: note.subject,
+    html: note.html,
+    text: note.text,
+    attachments: logo,
   });
-  if (error) return NextResponse.json({ error: "Could not send message." }, { status: 502 });
+  if (error) {
+    console.error("[contact] notification failed:", error.message);
+    return NextResponse.json({ error: "Could not send message." }, { status: 502 });
+  }
+
+  // 2. Acknowledge the visitor. Best effort: a bad or mistyped address must not fail the request.
+  const ack = acknowledgementEmail(d);
+  const { error: ackError } = await resend.emails.send({
+    from,
+    to: d.email,
+    replyTo: process.env.CONTACT_REPLY_TO ?? to,
+    subject: ack.subject,
+    html: ack.html,
+    text: ack.text,
+    attachments: logo,
+  });
+  if (ackError) console.warn("[contact] acknowledgement not sent:", ackError.message);
+
   return NextResponse.json({ ok: true });
 }

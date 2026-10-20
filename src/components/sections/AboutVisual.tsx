@@ -67,7 +67,7 @@ export function AboutVisual({ src, alt }: { src: string; alt: string }) {
         className="pointer-events-none absolute inset-0 mix-blend-soft-light"
         style={{
           background:
-            "radial-gradient(60% 60% at 15% 10%, rgba(94,23,235,0.5), transparent 70%), radial-gradient(50% 50% at 90% 95%, rgba(155,209,0,0.35), transparent 70%)",
+            "radial-gradient(60% 60% at 15% 10%, rgb(var(--accent-rgb)/0.5), transparent 70%), radial-gradient(50% 50% at 90% 95%, color-mix(in srgb, var(--color-lime) 35%, transparent), transparent 70%)",
         }}
       />
       <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">

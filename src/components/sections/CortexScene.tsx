@@ -3,7 +3,9 @@
 import { useEffect, useMemo, useRef } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
-import { LOGO_LIME } from "@/lib/logoPaths";
+import { cssColor } from "@/lib/theme";
+
+const LIME = cssColor("--color-lime", "#c8ff3d");
 
 const hash = (n: number) => {
   const s = Math.sin(n * 127.1 + 311.7) * 43758.5453;
@@ -257,11 +259,11 @@ function Satellites({
         >
           <mesh>
             <sphereGeometry args={[0.075, 14, 14]} />
-            <meshBasicMaterial color={LOGO_LIME} />
+            <meshBasicMaterial color={LIME} />
           </mesh>
           <mesh>
             <sphereGeometry args={[0.2, 14, 14]} />
-            <meshBasicMaterial color={LOGO_LIME} transparent opacity={0.16} depthWrite={false} />
+            <meshBasicMaterial color={LIME} transparent opacity={0.16} depthWrite={false} />
           </mesh>
         </group>
       ))}

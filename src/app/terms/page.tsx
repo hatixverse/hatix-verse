@@ -23,7 +23,7 @@ export default function Page() {
           <p className="text-muted mt-4 max-w-[62ch]">
             Questions about these terms?{" "}
             <a className="text-accent-hi underline" href={`mailto:${site.email}`}>
-              Email us
+              {site.email}
             </a>
             .
           </p>

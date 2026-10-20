@@ -106,7 +106,7 @@ export function Journey() {
                   className={cn(
                     "group bg-void ease-house relative flex flex-1 flex-col rounded-2xl border p-7 outline-offset-4 transition-[border-color,box-shadow,transform] duration-500",
                     active
-                      ? "border-accent/60 -translate-y-1 shadow-[0_28px_60px_-36px_rgba(94,23,235,0.55)]"
+                      ? "border-accent/60 -translate-y-1 shadow-[0_28px_60px_-36px_rgb(var(--accent-rgb)/0.55)]"
                       : "border-line",
                   )}
                 >
@@ -184,6 +184,13 @@ export function Journey() {
                     <a
                       href="#contact"
                       aria-label={`${journey.cta2} ${s.name}`}
+                      onClick={() =>
+                        window.dispatchEvent(
+                          new CustomEvent("hatix:prefill", {
+                            detail: `Hi, I'm interested in HATIX ${s.name}. Could we talk about how it would work for us?`,
+                          }),
+                        )
+                      }
                       className="text-accent inline-flex items-center gap-1.5 text-sm font-medium hover:underline"
                     >
                       Talk to us <ArrowUpRight size={16} aria-hidden />

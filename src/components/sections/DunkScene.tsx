@@ -95,7 +95,7 @@ export function DunkScene({ run, still }: { run: boolean; still: boolean }) {
           <defs>
             <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0" stopColor="#8f73ff" stopOpacity="0.85" />
-              <stop offset="1" stopColor="#5e17eb" stopOpacity="0.95" />
+              <stop offset="1" stopColor="var(--color-accent)" stopOpacity="0.95" />
             </linearGradient>
             <clipPath id="tankClip">
               <rect x="80" y="236" width="200" height="122" rx="8" />
@@ -110,17 +110,17 @@ export function DunkScene({ run, still }: { run: boolean; still: boolean }) {
                 y="20"
                 width="32.5"
                 height="36"
-                fill={i % 2 ? "#f6f7fa" : "#5e17eb"}
+                fill={i % 2 ? "#f6f7fa" : "var(--color-accent)"}
               />
               <circle
                 cx={66.25 + i * 32.5}
                 cy="56"
                 r="16.25"
-                fill={i % 2 ? "#f6f7fa" : "#5e17eb"}
+                fill={i % 2 ? "#f6f7fa" : "var(--color-accent)"}
               />
             </g>
           ))}
-          <rect x="50" y="14" width="260" height="10" rx="4" fill="#9bd100" />
+          <rect x="50" y="14" width="260" height="10" rx="4" fill="var(--color-lime)" />
           <rect x="56" y="72" width="8" height="170" fill="#3b4254" />
           <rect x="296" y="72" width="8" height="170" fill="#3b4254" />
 
@@ -148,7 +148,7 @@ export function DunkScene({ run, still }: { run: boolean; still: boolean }) {
             <rect x="34" y="-10" width="12" height="16" rx="4" fill="#0b0d13" />
             <rect x="-20" y="-52" width="40" height="48" rx="9" fill="#2c3243" />
             <path d="M-7 -52 L0 -38 L7 -52Z" fill="#f6f7fa" />
-            <path d="M0 -46 L-3 -36 L0 -28 L3 -36Z" fill="#9bd100" />
+            <path d="M0 -46 L-3 -36 L0 -28 L3 -36Z" fill="var(--color-lime)" />
             <line
               x1="16"
               y1="-38"
@@ -280,9 +280,9 @@ export function DunkScene({ run, still }: { run: boolean; still: boolean }) {
           />
           <g key={flash} className={flash ? "target-hit" : ""}>
             <circle cx="322" cy="150" r="26" fill="#f6f7fa" />
-            <circle cx="322" cy="150" r="20" fill="#5e17eb" />
+            <circle cx="322" cy="150" r="20" fill="var(--color-accent)" />
             <circle cx="322" cy="150" r="13" fill="#f6f7fa" />
-            <circle cx="322" cy="150" r="6" fill="#9bd100" />
+            <circle cx="322" cy="150" r="6" fill="var(--color-lime)" />
           </g>
         </svg>
 
@@ -361,7 +361,7 @@ export function DunkScene({ run, still }: { run: boolean; still: boolean }) {
           </ul>
           <p className="mt-2 text-[12px] italic">“{d.card.remark}”</p>
           {dunked && (
-            <span className="stamp-in absolute right-2 bottom-2 rounded border-2 border-[#5e17eb] px-2 py-0.5 text-[11px] font-bold tracking-widest text-[#5e17eb]">
+            <span className="stamp-in border-accent text-accent absolute right-2 bottom-2 rounded border-2 px-2 py-0.5 text-[11px] font-bold tracking-widest">
               {d.card.stamp}
             </span>
           )}

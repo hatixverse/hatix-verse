@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
 import { Compass, Rocket } from "lucide-react";
 import { hero } from "@/content/site";
-import { LOGO_LIME, LOGO_PURPLE, X_MAIN, X_TIP, X_VIEWBOX } from "@/lib/logoPaths";
+import { X_MAIN, X_TIP, X_VIEWBOX } from "@/lib/logoPaths";
 import { Button } from "@/components/ui/Button";
 import { StatStrip } from "./StatStrip";
 import { useMotionPref } from "@/components/providers/MotionPreference";
@@ -28,8 +28,8 @@ function StaticMark() {
     <div aria-hidden className="absolute inset-0 grid place-items-center">
       <div className="bg-accent/15 absolute size-[420px] rounded-full blur-[110px]" />
       <svg viewBox={X_VIEWBOX} className="relative w-[min(70%,420px)] drop-shadow-xl">
-        <path fill={LOGO_PURPLE} d={X_MAIN} />
-        <path fill={LOGO_LIME} d={X_TIP} />
+        <path fill="var(--color-accent)" d={X_MAIN} />
+        <path fill="var(--color-lime)" d={X_TIP} />
       </svg>
     </div>
   );
@@ -76,7 +76,7 @@ export function Hero() {
           className="display hero-in short:max-w-[52%] mt-6 max-w-3xl"
           style={{ animationDelay: "0.15s" }}
         >
-          <span className="label border-line bg-surface-1/70 !text-text mb-6 flex w-fit max-w-full items-center gap-2.5 rounded-full border px-4 py-2 !text-[11px] !leading-snug shadow-[0_8px_24px_-16px_rgba(94,23,235,0.5)] backdrop-blur max-sm:rounded-2xl sm:!text-[12px]">
+          <span className="label border-line bg-surface-1/70 !text-text mb-6 flex w-fit max-w-full items-center gap-2.5 rounded-full border px-4 py-2 !text-[11px] !leading-snug shadow-[0_8px_24px_-16px_rgb(var(--accent-rgb)/0.5)] backdrop-blur max-sm:rounded-2xl sm:!text-[12px]">
             <span aria-hidden className="relative flex size-2 shrink-0">
               <span className="bg-accent absolute inline-flex size-full rounded-full opacity-60 motion-safe:animate-ping" />
               <span className="bg-accent relative inline-flex size-2 rounded-full" />

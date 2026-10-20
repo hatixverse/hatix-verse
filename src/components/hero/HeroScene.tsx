@@ -2,9 +2,8 @@
 import { useEffect, useMemo, useRef } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
-import { LOGO_LIME, LOGO_PURPLE, X_MAIN, X_TIP } from "@/lib/logoPaths";
-
-const TIP_COLOR = LOGO_LIME; // lime accent on the small tip of the X
+import { X_MAIN, X_TIP } from "@/lib/logoPaths";
+import { cssColor } from "@/lib/theme";
 
 // Brand mark paths, in logo coordinates (see Logo.tsx).
 const BOX = { x: 1215, y: 98, w: 610, h: 555 };
@@ -124,8 +123,8 @@ function MarkParticles({ mobile, active }: { mobile: boolean; active: boolean })
       uMouse: { value: new THREE.Vector2(0, 0) },
       uMouseOn: { value: 0 },
       uOffset: { value: new THREE.Vector2(mobile ? 0.35 : 1.1, mobile ? 0 : 0.7) },
-      uMain: { value: new THREE.Color(LOGO_PURPLE) },
-      uTip: { value: new THREE.Color(TIP_COLOR) },
+      uMain: { value: new THREE.Color(cssColor("--color-accent", "#5e17eb")) },
+      uTip: { value: new THREE.Color(cssColor("--color-lime", "#c8ff3d")) },
     }),
     [mobile],
   );

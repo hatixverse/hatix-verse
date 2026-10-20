@@ -11,8 +11,9 @@
   --color-muted: #555b6b;
   --color-faint: #7b8192;
   --color-accent: #5e17eb;
+  --accent-rgb: 94 23 235; /* same as accent, for alpha shadows/glows */
   --color-accent-hi: #4a10c4;
-  --color-spark: #9bd100;
+  --color-spark: #c8ff3d;
   --color-lime: #c8ff3d; /* bright lime for fills that carry dark text */
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
@@ -293,7 +294,7 @@ input[type="range"].friction::-webkit-slider-thumb {
   border: 3px solid var(--color-void);
   box-shadow:
     0 0 0 1px var(--color-accent),
-    0 6px 16px -4px rgba(94, 23, 235, 0.6);
+    0 6px 16px -4px rgb(var(--accent-rgb) / 0.6);
 }
 input[type="range"].friction::-moz-range-thumb {
   width: 18px;
